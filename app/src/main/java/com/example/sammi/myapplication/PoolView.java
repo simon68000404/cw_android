@@ -1,14 +1,12 @@
 package com.example.sammi.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,6 +24,9 @@ public class PoolView extends LinearLayout
                 TextView tv = (TextView) view;
                 tv.setBackgroundColor(Color.MAGENTA);
 
+                Activity act = (Activity)getContext();
+                CrosswordView cw = (CrosswordView) act.findViewById(R.id.the_crossword_view);
+                cw.getCurrentLetterView().setText(tv.getText());
             }
         };
     }

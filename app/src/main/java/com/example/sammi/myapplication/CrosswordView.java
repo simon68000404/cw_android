@@ -20,6 +20,7 @@ public class CrosswordView extends RelativeLayout
     public CrosswordView(Context context, Crossword crossword)
     {
         super(context);
+        this.setId(R.id.the_crossword_view);
         //this.setBackgroundResource(R.drawable.background);
         mLetterViews = new LetterView[crossword.getHeight()][crossword.getWidth()];
         mCrossword = crossword;
@@ -38,7 +39,7 @@ public class CrosswordView extends RelativeLayout
 //                    lv.setTranslationY(mSideLength * i);
 //                    lv.setWidth(mSideLength);
 //                    lv.setHeight(mSideLength);
-                    lv.setText(Character.toString(table[i][j].getChar()));
+                    //lv.setText(Character.toString(table[i][j].getChar()));
                     lv.setGravity(Gravity.CENTER);
                     lv.setBackgroundResource(R.drawable.background);
                     lv.setOnClickListener(new View.OnClickListener(){
