@@ -56,14 +56,14 @@ public class Word
         if (direction == "Horizontal")
         {
             mDirection = Direction.HORIZONTAL;
-            x1 = mHeadPos.x + mWordLength - 1;
-            y1 = mHeadPos.y;
+            x1 = mHeadPos.c + mWordLength - 1;
+            y1 = mHeadPos.r;
         }
         else
         {
             mDirection = Direction.VERTICAL;
-            x1 = mHeadPos.x;
-            y1 = mHeadPos.y + mWordLength - 1;
+            x1 = mHeadPos.c;
+            y1 = mHeadPos.r + mWordLength - 1;
         }
 
         mRearPos = new Letter.Pos(x1, y1);
@@ -85,14 +85,14 @@ public class Word
         if (direction == Direction.HORIZONTAL)
         {
             mDirection = Direction.HORIZONTAL;
-            x1 = mHeadPos.x + mWordLength - 1;
-            y1 = mHeadPos.y;
+            x1 = mHeadPos.c + mWordLength - 1;
+            y1 = mHeadPos.r;
         }
         else
         {
             mDirection = Direction.VERTICAL;
-            x1 = mHeadPos.x;
-            y1 = mHeadPos.y + mWordLength - 1;
+            x1 = mHeadPos.c;
+            y1 = mHeadPos.r + mWordLength - 1;
         }
 
         mRearPos = new Letter.Pos(x1, y1);

@@ -25,6 +25,7 @@ public class PoolView extends LinearLayout
             public void onClick(View view) {
                 TextView tv = (TextView) view;
                 tv.setBackgroundColor(Color.MAGENTA);
+
             }
         };
     }

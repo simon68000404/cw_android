@@ -2,6 +2,7 @@ package com.example.sammi.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -116,13 +117,57 @@ public class CrosswordView extends RelativeLayout
     }
 
     public void setCurrentLetterView(LetterView currentLetterView) {
-        if (this.mCurrentLetterView != null)
+        if (this.mCurrentLetterView == currentLetterView)
         {
-            this.mCurrentLetterView.setBackgroundColor(0xFFFFFFFF);
+            return;
         }
 
+        if (this.mCurrentLetterView != null)
+        {
+            //this.mCurrentLetterView.setBackgroundResource(R.drawable.background);
+            Word preWord = mCurrentLetterView.getLetter().getWordsBelongTo().get(0);
+            int length = preWord.getValue().length();
+            Letter.Pos headPos = preWord.getHeadPos();
+            if (preWord.getDirection() == Word.Direction.HORIZONTAL)
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    this.mLetterViews[headPos.r][headPos.c + i].setBackgroundResource(R.drawable.background);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    this.mLetterViews[headPos.r + i][headPos.c].setBackgroundResource(R.drawable.background);
+                }
+            }
+        }
+
+        Word word = currentLetterView.getLetter().getWordsBelongTo().get(0);
         this.mCurrentLetterView = currentLetterView;
-        this.mCurrentLetterView.setBackgroundColor(0xFF00FF00);
+        //this.mCurrentLetterView.setBackgroundColor(0xFF00FF00);
+
+
+
+        //Log.d("aaaaaaaaaa", word.getValue() + " " + word.getHeadPos().x + " " + word.getHeadPos().y);
+        int length = word.getValue().length();
+        Letter.Pos headPos = word.getHeadPos();
+        if (word.getDirection() == Word.Direction.HORIZONTAL)
+        {
+            for (int i = 0; i < length; i++)
+            {
+                this.mLetterViews[headPos.r][headPos.c + i].setBackgroundColor(0xFF00FF00);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < length; i++)
+            {
+                this.mLetterViews[headPos.r + i][headPos.c].setBackgroundColor(0xFF00FF00);
+            }
+        }
+        this.mCurrentLetterView.setBackgroundColor(Color.BLUE);
     }
     public LetterView getCurrentLetterView() {
         return mCurrentLetterView;

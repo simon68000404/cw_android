@@ -47,12 +47,12 @@ public class Letter {
 
     public static class Pos
     {
-        Pos(int x, int y)
+        Pos(int c, int r)
         {
-            this.x = x;
-            this.y = y;
+            this.c = c;
+            this.r = r;
         }
-        public int x;
-        public int y;
+        public int c;
+        public int r;
     }
 }

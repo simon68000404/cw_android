@@ -114,7 +114,7 @@ public class Crossword
             int wordLength = mHorizontalWords[i].getValue().length();
             for (int j = 0; j < wordLength; j++)
             {
-                Letter letter = mLetterTable[pos.y][pos.x + j];
+                Letter letter = mLetterTable[pos.r][pos.c + j];
                 letter.setChar(mHorizontalWords[i].getValue().charAt(j));
                 letter.addWordBelongTo(mHorizontalWords[i]);
                 mHorizontalWords[i].addLetter(letter);
@@ -127,7 +127,7 @@ public class Crossword
             int wordLength = mVerticalWords[i].getValue().length();
             for (int j = 0; j < wordLength; j++)
             {
-                Letter letter = mLetterTable[pos.y + j][pos.x];
+                Letter letter = mLetterTable[pos.r + j][pos.c];
                 letter.setChar(mVerticalWords[i].getValue().charAt(j));
                 letter.addWordBelongTo(mVerticalWords[i]);
                 mVerticalWords[i].addLetter(letter);
