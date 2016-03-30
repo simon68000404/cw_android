@@ -47,7 +47,7 @@ public class Letter {
 
     public static class Pos
     {
-        Pos(int c, int r)
+        Pos(int r, int c)
         {
             this.c = c;
             this.r = r;
