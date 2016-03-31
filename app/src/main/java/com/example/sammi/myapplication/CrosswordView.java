@@ -158,46 +158,69 @@ public class CrosswordView extends RelativeLayout
         if (this.mCurrentLetterView != null)
         {
             //this.mCurrentLetterView.setBackgroundResource(R.drawable.background);
-            Word preWord = mCurrentLetterView.getLetter().getWordsBelongTo().get(0);
-            int length = preWord.getValue().length();
-            Letter.Pos headPos = preWord.getHeadPos();
-            if (preWord.getDirection() == Word.Direction.HORIZONTAL)
-            {
-                for (int i = 0; i < length; i++)
-                {
-                    this.mLetterViews[headPos.r][headPos.c + i].setBackgroundResource(R.drawable.background);
+            ArrayList<Word> preWordList = mCurrentLetterView.getLetter().getWordsBelongTo();
+            if (preWordList.size() == 1) {
+                Word preWord = preWordList.get(0);
+                int length = preWord.getValue().length();
+                Letter.Pos headPos = preWord.getHeadPos();
+                if (preWord.getDirection() == Word.Direction.HORIZONTAL) {
+                    for (int i = 0; i < length; i++) {
+                        this.mLetterViews[headPos.r][headPos.c + i].setBackgroundResource(R.drawable.background);
+                    }
+                } else {
+                    for (int i = 0; i < length; i++) {
+                        this.mLetterViews[headPos.r + i][headPos.c].setBackgroundResource(R.drawable.background);
+                    }
                 }
             }
             else
             {
-                for (int i = 0; i < length; i++)
-                {
-                    this.mLetterViews[headPos.r + i][headPos.c].setBackgroundResource(R.drawable.background);
+                Word hWord = preWordList.get(0);
+                Word vWord = preWordList.get(1);
+                int hLength = hWord.getValue().length();
+                int vLength = vWord.getValue().length();
+                Letter.Pos hHeadPos = hWord.getHeadPos();
+                Letter.Pos vHeadPos = vWord.getHeadPos();
+                for (int i = 0; i < hLength; i++) {
+                    this.mLetterViews[hHeadPos.r][hHeadPos.c + i].setBackgroundResource(R.drawable.background);
+                }
+                for (int i = 0; i < vLength; i++) {
+                    this.mLetterViews[vHeadPos.r + i][vHeadPos.c].setBackgroundResource(R.drawable.background);
                 }
             }
         }
 
-        Word word = currentLetterView.getLetter().getWordsBelongTo().get(0);
-        if (this.mCurrentLetterView != null)
-        Log.d("before:", this.mCurrentLetterView + " " + this.mCurrentLetterView.getLetter().getPos().c + "\n" + currentLetterView + " " + currentLetterView.getLetter().getPos().c);
+        ArrayList<Word> wordList = currentLetterView.getLetter().getWordsBelongTo();
         this.mCurrentLetterView = currentLetterView;
-        Log.d("after:", this.mCurrentLetterView + " " + this.mCurrentLetterView.getLetter().getPos().c + "\n" + currentLetterView + " " + currentLetterView.getLetter().getPos().c);
-
         //Log.d("aaaaaaaaaa", word.getValue() + " " + word.getHeadPos().x + " " + word.getHeadPos().y);
-        int length = word.getValue().length();
-        Letter.Pos headPos = word.getHeadPos();
-        if (word.getDirection() == Word.Direction.HORIZONTAL)
-        {
-            for (int i = 0; i < length; i++)
-            {
-                this.mLetterViews[headPos.r][headPos.c + i].setBackgroundColor(0xFF00FF00);
+        if (wordList.size() == 1) {
+            Word word = wordList.get(0);
+            int length = word.getValue().length();
+
+            Letter.Pos headPos = word.getHeadPos();
+            if (word.getDirection() == Word.Direction.HORIZONTAL) {
+                for (int i = 0; i < length; i++) {
+                    this.mLetterViews[headPos.r][headPos.c + i].setBackgroundColor(0xFF00FF00);
+                }
+            } else {
+                for (int i = 0; i < length; i++) {
+                    this.mLetterViews[headPos.r + i][headPos.c].setBackgroundColor(0xFF00FF00);
+                }
             }
         }
         else
         {
-            for (int i = 0; i < length; i++)
-            {
-                this.mLetterViews[headPos.r + i][headPos.c].setBackgroundColor(0xFF00FF00);
+            Word hWord = wordList.get(0);
+            Word vWord = wordList.get(1);
+            int hLength = hWord.getValue().length();
+            int vLength = vWord.getValue().length();
+            Letter.Pos hHeadPos = hWord.getHeadPos();
+            Letter.Pos vHeadPos = vWord.getHeadPos();
+            for (int i = 0; i < hLength; i++) {
+                this.mLetterViews[hHeadPos.r][hHeadPos.c + i].setBackgroundColor(0xFF00FF00);
+            }
+            for (int i = 0; i < vLength; i++) {
+                this.mLetterViews[vHeadPos.r + i][vHeadPos.c].setBackgroundColor(0xFF00FF00);
             }
         }
         this.mCurrentLetterView.setBackgroundColor(Color.BLUE);
