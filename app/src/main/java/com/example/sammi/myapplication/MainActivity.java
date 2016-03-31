@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,//no use
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.BELOW, R.id.pool_view);
+        params.addRule(RelativeLayout.BELOW, R.id.hint_view);
         crosswordView.setLayoutParams(params);//no use
 
         RelativeLayout contentLayout = (RelativeLayout) findViewById(R.id.content_layout);

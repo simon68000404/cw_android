@@ -23,5 +23,5 @@ public class LetterView extends TextView
         return mLetter;
     }
 
-    private Letter mLetter;
+    private Letter mLetter = new Letter('0', 0, 0);
 }

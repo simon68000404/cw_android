@@ -12,6 +12,16 @@ public class Letter {
         mChar = c;
         mPos = new Pos(row, column);
     }
+    Letter(Letter l)
+    {
+        mChar = l.mChar;
+        mPos = l.mPos.clone();
+    }
+
+    public Letter clone()
+    {
+        return new Letter(this);
+    }
 
     public char getChar()
     {
@@ -51,6 +61,15 @@ public class Letter {
         {
             this.c = c;
             this.r = r;
+        }
+        Pos(Pos pos)
+        {
+            this.c = pos.c;
+            this.r = pos.r;
+        }
+        public Pos clone()
+        {
+            return new Pos(this);
         }
         public int c;
         public int r;

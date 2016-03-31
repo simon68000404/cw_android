@@ -1,6 +1,7 @@
 package com.example.sammi.myapplication;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.TextView;
 
 /**
@@ -8,7 +9,12 @@ import android.widget.TextView;
  */
 public class HintView extends TextView
 {
-    public HintView(Context context) {
-        super(context);
+    public HintView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public void updateText(String text)
+    {
+        this.setText(text);
     }
 }

@@ -24,7 +24,13 @@
         <!--android:background="@drawable/background"/>-->
     <com.example.sammi.myapplication.PoolView
     android:id="@+id/pool_view"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
     android:background="@drawable/background"/>
+    <com.example.sammi.myapplication.HintView
+        android:id="@+id/hint_view"
+        android:layout_below="@id/pool_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/background"/>
 </RelativeLayout>

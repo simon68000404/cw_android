@@ -41,11 +41,12 @@ public class PoolView extends LinearLayout
         {
             TextView tv = new TextView(getContext());
             tv.setText(Character.toString(candidates.get(i)));
+            tv.setPadding(10, 10, 10, 10);
             tv.setGravity(Gravity.CENTER);
             tv.setBackgroundResource(R.drawable.background);
             tv.setOnClickListener(mListener);
             //tv.setX(i * 20);
-            tv.setWidth(20);
+            //tv.setWidth(30);
             LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             llp.setMargins(10, 10, 10, 10);
             tv.setLayoutParams(llp);
