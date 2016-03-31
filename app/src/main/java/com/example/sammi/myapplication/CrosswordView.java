@@ -64,6 +64,8 @@ public class CrosswordView extends RelativeLayout
                             PoolView pv = (PoolView) act.findViewById(R.id.pool_view);
                             Log.d("pv", pv.toString());
                             pv.updatePool(wordsThisLetterBelongTo.get(0).getPool());
+                            HintView hv = (HintView) act.findViewById(R.id.hint_view);
+                            hv.updateText(wordsThisLetterBelongTo.get(0).getHint());
                         }
                     });
 
@@ -117,6 +119,36 @@ public class CrosswordView extends RelativeLayout
         return mCurrentWord;
     }
 
+    public void setCalculatedCurrentLetterView()
+    {
+        Log.d("abcd", mCurrentLetterView.getLetter().getChar() + "");
+        Letter.Pos pos = mCurrentLetterView.getLetter().getPos().clone();
+        Word currentWord = this.getCurrentWord();
+        if (currentWord.getDirection() == Word.Direction.HORIZONTAL)
+        {
+            if (pos.c < currentWord.getRearPos().c)
+            {
+                pos.c += 1;
+            }
+            else
+            {
+                return;
+            }
+
+        }
+        else
+        {
+            if (pos.r < currentWord.getRearPos().r)
+            {
+                pos.r += 1;
+            }
+            else
+            {
+                return;
+            }
+        }
+        this.setCurrentLetterView(mLetterViews[pos.r][pos.c]);
+    }
     public void setCurrentLetterView(LetterView currentLetterView) {
         if (this.mCurrentLetterView == currentLetterView)
         {
@@ -146,10 +178,10 @@ public class CrosswordView extends RelativeLayout
         }
 
         Word word = currentLetterView.getLetter().getWordsBelongTo().get(0);
+        if (this.mCurrentLetterView != null)
+        Log.d("before:", this.mCurrentLetterView + " " + this.mCurrentLetterView.getLetter().getPos().c + "\n" + currentLetterView + " " + currentLetterView.getLetter().getPos().c);
         this.mCurrentLetterView = currentLetterView;
-        //this.mCurrentLetterView.setBackgroundColor(0xFF00FF00);
-
-
+        Log.d("after:", this.mCurrentLetterView + " " + this.mCurrentLetterView.getLetter().getPos().c + "\n" + currentLetterView + " " + currentLetterView.getLetter().getPos().c);
 
         //Log.d("aaaaaaaaaa", word.getValue() + " " + word.getHeadPos().x + " " + word.getHeadPos().y);
         int length = word.getValue().length();

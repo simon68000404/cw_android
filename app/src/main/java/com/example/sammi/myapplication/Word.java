@@ -47,7 +47,7 @@ public class Word
     Word(String word, String hint, int x0, int y0, String direction, int index)
     {
         mWordLength = word.length();
-        mHeadPos = new Letter.Pos(x0, y0);
+        mHeadPos = new Letter.Pos(y0, x0);
         mTheWord = word;
         mHint = hint;
         mIndex = index;
@@ -66,7 +66,7 @@ public class Word
             y1 = mHeadPos.r + mWordLength - 1;
         }
 
-        mRearPos = new Letter.Pos(x1, y1);
+        mRearPos = new Letter.Pos(y1, x1);
         mLetters = new ArrayList<Letter>(mWordLength);
 //        char[] chars = {'a','a','a','a','a','a','a','a','a','a','a','a'};
 //        mPool = new Pool();
@@ -76,7 +76,7 @@ public class Word
     Word(String word, String hint, int x0, int y0, Direction direction, int index)
     {
         mWordLength = word.length();
-        mHeadPos = new Letter.Pos(x0, y0);
+        mHeadPos = new Letter.Pos(y0, x0);
         mTheWord = word;
         mHint = hint;
         mIndex = index;
@@ -95,7 +95,7 @@ public class Word
             y1 = mHeadPos.r + mWordLength - 1;
         }
 
-        mRearPos = new Letter.Pos(x1, y1);
+        mRearPos = new Letter.Pos(y1, x1);
         mLetters = new ArrayList<Letter>(mWordLength);
         mPool = new Pool(this);
 
