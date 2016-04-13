@@ -14,6 +14,15 @@ public class LetterView extends TextView
         super(context);
     }
 
+    public boolean check()
+    {
+        boolean res = mLetter.check(this.getText().charAt(0));
+        if (res == false)
+        {
+            this.setTextColor(0xFFFF0000);
+        }
+        return res;
+    }
     public void setLetter(Letter l)
     {
         mLetter = l;

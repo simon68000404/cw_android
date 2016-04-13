@@ -18,6 +18,14 @@ import org.json.JSONTokener;
  */
 public class Crossword
 {
+    enum Result
+    {
+        GRID_FILLED_RIGHT,
+        GRID_FILLED_WRONG,
+        GRID_NOT_FILLED,
+        GRID_INVALID
+    }
+
     String testPuzzle = "{\n" +
             "\t\"width\" : 11,\n" +
             "\t\"height\" : 7,\n" +
@@ -135,6 +143,30 @@ public class Crossword
         }
     }
 
+
+    public Result[][] runCheck(Character[][] inputs) //inputs can be null(nothing), 0(nothing filled), or a letter
+    {
+        Result[][] result = new Result[mHeight][mWidth];
+        for (int i = 0; i < mHeight; i++)
+        {
+            for (int j = 0; j < mWidth; j++)
+            {
+                if (inputs[i][j] == null)
+                {
+                    result[i][j] = Result.GRID_INVALID;
+                }
+                else if (inputs[i][j] == 0)
+                {
+                    result[i][j] = Result.GRID_NOT_FILLED;
+                }
+                else//other input possible values: 0(nothing filled) or a letter
+                {
+                    result[i][j] = mLetterTable[i][j].check(inputs[i][j]) ? Result.GRID_FILLED_RIGHT : Result.GRID_FILLED_WRONG;
+                }
+            }
+        }
+        return result;
+    }
     Crossword()
     {
 //        String s = "[0,{\"1\":{\"2\":{\"3\":{\"4\":[5,{\"6\":7}]}}}}]";

@@ -1,5 +1,7 @@
 package com.example.sammi.myapplication;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -21,6 +23,12 @@ public class Letter {
     public Letter clone()
     {
         return new Letter(this);
+    }
+
+    public boolean check(Character ans)
+    {
+        //Log.d("ccc", ans.equals(mChar) + " " + ans + " " + mChar);
+        return ans.equals(mChar);
     }
 
     public char getChar()

@@ -19,15 +19,6 @@ public class GamePlayActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
 //        TextView text = (TextView) findViewById(R.id.samplegrid);
 //        text.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -80,7 +71,7 @@ public class GamePlayActivity extends AppCompatActivity {
                 "\t\t\t}\n" +
                 "\t\t]\n" +
                 "}";
-        Crossword crossword = new Crossword(testPuzzle);
+        final Crossword crossword = new Crossword(testPuzzle);
 
         Letter[][] table = crossword.getLetterTable();
 //        String a = "";
@@ -92,7 +83,7 @@ public class GamePlayActivity extends AppCompatActivity {
 //            }
 //        }
 //        Log.d("info", a);
-        CrosswordView crosswordView = new CrosswordView(this, crossword);
+        final CrosswordView crosswordView = new CrosswordView(this, crossword);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,//no use
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -101,6 +92,15 @@ public class GamePlayActivity extends AppCompatActivity {
 
         RelativeLayout contentLayout = (RelativeLayout) findViewById(R.id.content_layout);
         contentLayout.addView(crosswordView);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action " + crosswordView.getScore(), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     @Override
