@@ -25,10 +25,15 @@ public class Letter {
         return new Letter(this);
     }
 
-    public boolean check(Character ans)
+    public boolean check()
     {
         //Log.d("ccc", ans.equals(mChar) + " " + ans + " " + mChar);
-        return ans.equals(mChar);
+        mCorrect = mUserAnswer.equals(mChar);
+        return mCorrect;
+    }
+    public boolean getCheckResult()
+    {
+        return mCorrect;
     }
 
     public char getChar()
@@ -59,7 +64,7 @@ public class Letter {
         this.mPos = pos;
     }
 
-    private char mChar;
+    private Character mChar;
     private Pos mPos;
     private ArrayList<Word> mWordsBelongTo = new ArrayList<Word>();
 
@@ -82,4 +87,15 @@ public class Letter {
         public int c;
         public int r;
     }
+    private boolean mCorrect = false;
+
+    public Character getUserAnswer() {
+        return mUserAnswer;
+    }
+
+    public void setUserAnswer(Character userAnswer) {
+        this.mUserAnswer = userAnswer;
+    }
+
+    private Character mUserAnswer = null;
 }

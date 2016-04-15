@@ -116,27 +116,27 @@ public class CrosswordView extends RelativeLayout
     {
         int rows = mCrossword.getHeight();
         int columns = mCrossword.getWidth();
-        Character[][] user_answer = new Character[rows][columns];
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < columns; j++)
-            {
-                if (mLetterViews[i][j] != null)
-                {
-                    Log.d("rrr", mLetterViews[i][j].getLetter().getPos().r + " " + mLetterViews[i][j].getLetter().getPos().c + " " + user_answer[i][j] + " " + mLetterViews[i][j].getText());
-                    if (mLetterViews[i][j].getText().length() == 1)//if user filled it
-                    {
-                        user_answer[i][j] = mLetterViews[i][j].getText().charAt(0);
-                    }
-                    else//if user haven't filled it with letter
-                    {
-                        user_answer[i][j] = 0;
-                    }
-
-                }
-            }
-        }
-        Crossword.Result[][] result = mCrossword.runCheck(user_answer);
+//        Character[][] user_answer = new Character[rows][columns];
+//        for (int i = 0; i < rows; i++)
+//        {
+//            for (int j = 0; j < columns; j++)
+//            {
+//                if (mLetterViews[i][j] != null)
+//                {
+//                    Log.d("rrr", mLetterViews[i][j].getLetter().getPos().r + " " + mLetterViews[i][j].getLetter().getPos().c + " " + user_answer[i][j] + " " + mLetterViews[i][j].getText());
+//                    if (mLetterViews[i][j].getText().length() == 1)//if user filled it
+//                    {
+//                        user_answer[i][j] = mLetterViews[i][j].getText().charAt(0);
+//                    }
+//                    else//if user haven't filled it with letter
+//                    {
+//                        user_answer[i][j] = 0;
+//                    }
+//
+//                }
+//            }
+//        }
+        Crossword.Result[][] result = mCrossword.runCheck();
         int score = 0;
         int fullScore = 0;
         for (int i = 0; i < rows; i++)

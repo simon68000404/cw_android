@@ -27,6 +27,7 @@ public class PoolView extends LinearLayout
                 Activity act = (Activity)getContext();
                 CrosswordView cw = (CrosswordView) act.findViewById(R.id.the_crossword_view);
                 cw.getCurrentLetterView().setText(tv.getText());
+                cw.getCurrentLetterView().check();
 
                 cw.setCalculatedCurrentLetterView();
             }

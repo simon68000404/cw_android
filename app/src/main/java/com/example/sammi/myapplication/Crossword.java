@@ -161,7 +161,34 @@ public class Crossword
                 }
                 else//other input possible values: 0(nothing filled) or a letter
                 {
-                    result[i][j] = mLetterTable[i][j].check(inputs[i][j]) ? Result.GRID_FILLED_RIGHT : Result.GRID_FILLED_WRONG;
+                    //result[i][j] = mLetterTable[i][j].check(inputs[i][j]) ? Result.GRID_FILLED_RIGHT : Result.GRID_FILLED_WRONG;
+                }
+            }
+        }
+        return result;
+    }
+    public Result[][] runCheck() //inputs can be null(nothing), 0(nothing filled), or a letter
+    {
+        Result[][] result = new Result[mHeight][mWidth];
+        for (int i = 0; i < mHeight; i++)
+        {
+            for (int j = 0; j < mWidth; j++)
+            {
+                if (mLetterTable[i][j] == null)
+                {
+                    result[i][j] = Result.GRID_INVALID;
+                }
+                else if (mLetterTable[i][j].getUserAnswer() == null)
+                {
+                    result[i][j] = Result.GRID_NOT_FILLED;
+                }
+                else if (mLetterTable[i][j].getCheckResult() == true)
+                {
+                    result[i][j] = Result.GRID_FILLED_RIGHT;
+                }
+                else//other input possible values: 0(nothing filled) or a letter
+                {
+                    result[i][j] = Result.GRID_FILLED_WRONG;
                 }
             }
         }

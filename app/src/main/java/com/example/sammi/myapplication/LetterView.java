@@ -16,10 +16,15 @@ public class LetterView extends TextView
 
     public boolean check()
     {
-        boolean res = mLetter.check(this.getText().charAt(0));
+        mLetter.setUserAnswer(getText().charAt(0));
+        boolean res = mLetter.check();
         if (res == false)
         {
             this.setTextColor(0xFFFF0000);
+        }
+        else
+        {
+            this.setTextColor(0xFF00FFFF);
         }
         return res;
     }
@@ -33,4 +38,5 @@ public class LetterView extends TextView
     }
 
     private Letter mLetter = new Letter('0', 0, 0);
+
 }
